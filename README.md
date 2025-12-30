@@ -46,32 +46,27 @@ Our mission is to empower **students and first-time investors** with access to w
 ## 📸 Screenshots
 
 ### 🏠 Landing Page
-<img src="assets/screenshots/landing.png" width="800"/>
+<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/landing.png" width="800"/>
 
 ---
 
 ### 🛒 Marketplace
-Discover and invest in premium fractional assets.
-<img src="assets/screenshots/marketplace.png" width="800"/>
+<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/marketplace.png" width="800"/>
 
 ---
 
-### 📊 User Dashboard
-Track wallet balance, profits, active assets, and portfolio growth.
-<img src="assets/screenshots/dashboard.png" width="800"/>
+### 📊 Dashboard
+<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/dashboard.png" width="800"/>
 
 ---
 
 ### 📈 Market Analytics
-Real-time market insights, growth trends, and asset category distribution.
-<img src="assets/screenshots/analytics.png" width="800"/>
+<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/analytics.png" width="800"/>
 
 ---
 
 ### ⭐ Marketplace Highlights
-Curated high-value assets with verified ownership.
-<img src="assets/screenshots/highlights.png" width="800"/>
-
+<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/highlights.png" width="800"/>
 
 ---
 
