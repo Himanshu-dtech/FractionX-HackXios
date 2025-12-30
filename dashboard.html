@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FractionX</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard-sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fas fa-rocket"></i> 
+            <span class="brand-text">FractionX</span>
+        </div>
+        <ul class="side-menu">
+            <li class="active"><a href="dashboard.html"><i class="fas fa-chart-pie"></i> <span class="link-text">Overview</span></a></li>
+            <li><a href="marketplace.html"><i class="fas fa-store"></i> <span class="link-text">Marketplace</span></a></li>
+            <li><a href="portfolio.html"><i class="fas fa-wallet"></i> <span class="link-text">My Portfolio</span></a></li>
+            <li><a href="tokenize.html"><i class="fas fa-pen-fancy"></i> <span class="link-text">Tokenize Asset</span></a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-line"></i> <span class="link-text">Analytics</span></a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> <span class="link-text">My Profile</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="footer-btn" id="themeToggle">
+                <i class="fas fa-moon"></i> <span class="link-text">Dark Mode</span>
+            </button>
+            <a href="#" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> <span class="link-text">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-bar" style="margin-bottom: 30px;">
+            <div style="display:flex; align-items:center; width:100%;">
+                <button id="sidebarToggle" class="mobile-only" style="background:none; border:none; color:var(--text-main); font-size:1.5rem; margin-right:20px; cursor:pointer;"><i class="fas fa-bars"></i></button>
+                
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search assets, transactions...">
+                </div>
+
+                <div style="margin-left:auto; display:flex; align-items:center; gap:20px;">
+                    <button style="background:var(--bg-hover); border:none; width:40px; height:40px; border-radius:50%; color:var(--text-muted); cursor:pointer;"><i class="fas fa-bell"></i></button>
+                    <div class="user-pill">
+                        <div class="avatar-circle">H</div>
+                        <span id="navUserName">Himanshu Kumar</span>
+                        <i class="fas fa-chevron-down" style="font-size:0.8rem; margin-left:5px; color:var(--text-muted);"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div>
+            <h1 style="font-size:1.8rem; font-weight:700; margin-bottom:5px; color:var(--text-main);">Dashboard</h1>
+            <p style="color:var(--text-muted); margin-bottom:30px;">Welcome back, <span id="dashUserName" style="color:var(--primary); font-weight:600;">Himanshu</span>! 👋</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card gradient-card">
+                <div class="icon-box-glass"><i class="fas fa-wallet"></i></div>
+                <span class="card-label" style="color:rgba(255,255,255,0.8);">Total Wallet Balance</span>
+                <h2 class="card-value" id="dashBalance" style="color:white;">₹0</h2>
+            </div>
+
+            <div class="card">
+                <div class="stat-header">
+                    <span class="card-label" style="color:var(--text-muted)">Total Profit</span>
+                    <i class="fas fa-chart-line" style="color:var(--text-muted)"></i>
+                </div>
+                <div style="display:flex; align-items:baseline; gap:10px;">
+                    <h2 class="card-value" id="dashProfit" style="color:var(--text-main);">₹0</h2>
+                    <span class="trend-badge" style="color:var(--success); background:rgba(16, 185, 129, 0.1); padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;"><i class="fas fa-arrow-up"></i> 12.5%</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="stat-header">
+                    <span class="card-label" style="color:var(--text-muted)">Active Assets</span>
+                    <i class="fas fa-layer-group" style="color:var(--text-muted)"></i>
+                </div>
+                <h2 class="card-value" id="totalAssetsCount" style="color:var(--text-main);">0</h2>
+            </div>
+        </div>
+
+        <div class="bottom-grid">
+            
+            <div class="card chart-card">
+
+                <div style="display:flex; justify-content:space-between; margin-bottom:20px; align-items:center;">
+                    <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-main);">Portfolio Growth</h3>
+                    <select style="background:var(--bg-body); color:var(--text-muted); border:1px solid var(--border); padding:5px 10px; border-radius:8px; outline:none; font-size:0.85rem;">
+                        <option>This Week</option>
+                        <option>This Month</option>
+                        <option>This Year</option>
+                    </select>
+                </div>
+                <div style="height:250px; width:100%;">
+                    <canvas id="portfolioChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display:flex; justify-content:space-between; margin-bottom:20px; align-items:center;">
+                    <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-main);">Recent Activity</h3>
+                    <a href="portfolio.html" style="color:var(--primary); font-size:0.9rem; font-weight:600; text-decoration:none;">See All</a>
+                </div>
+                
+                <div class="activity-list" id="dashActivityList">
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Loading activities...</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/global.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

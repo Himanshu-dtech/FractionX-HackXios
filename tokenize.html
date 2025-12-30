@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenize Asset | FractionX</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard-sidebar.css">
+    <link rel="stylesheet" href="css/tokenize.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fas fa-rocket"></i> 
+            <span class="brand-text">FractionX</span>
+        </div>
+        <ul class="side-menu">
+            <li><a href="dashboard.html"><i class="fas fa-chart-pie"></i> <span class="link-text">Overview</span></a></li>
+            <li><a href="marketplace.html"><i class="fas fa-store"></i> <span class="link-text">Marketplace</span></a></li>
+            <li><a href="portfolio.html"><i class="fas fa-wallet"></i> <span class="link-text">My Portfolio</span></a></li>
+            <li class="active"><a href="tokenize.html"><i class="fas fa-pen-fancy"></i> <span class="link-text">Tokenize Asset</span></a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-line"></i> <span class="link-text">Analytics</span></a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> <span class="link-text">My Profile</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="footer-btn" id="themeToggle">
+                <i class="fas fa-moon"></i> <span class="link-text">Dark Mode</span>
+            </button>
+            <a href="#" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> <span class="link-text">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-bar">
+            <div style="display:flex; align-items:center;">
+                <button id="sidebarToggle" class="mobile-only" style="margin-right:15px; background:none; border:none; color:var(--text-main); font-size:1.5rem;"><i class="fas fa-bars"></i></button>
+                <div>
+                    <h1>Tokenize Asset</h1>
+                    <p style="color:var(--text-muted)">Turn real-world assets into digital tokens.</p>
+                </div>
+            </div>
+            
+            <div class="user-pill">
+                <div class="avatar-circle">H</div>
+                <span id="navUserName">Himanshu Kumar</span>
+            </div>
+        </header>
+
+        <div class="tokenize-grid">
+            
+            <div class="form-card">
+                <h3 style="margin-bottom:20px; color:var(--text-main);">Asset Details</h3>
+                <form id="tokenizeForm">
+                    <div class="form-group">
+                        <label>Asset Name</label>
+                        <input type="text" id="assetTitle" placeholder="e.g. Rolex Submariner" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="assetCategory">
+                                <option value="Vehicle">Vehicle</option>
+                                <option value="Real Estate">Real Estate</option>
+                                <option value="Art">Art</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" id="assetLocation" placeholder="e.g. London, UK" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Valuation (₹)</label>
+                            <input type="number" id="assetPrice" placeholder="5000000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Total Tokens</label>
+                            <input type="number" id="totalTokens" placeholder="1000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Token Price (Auto)</label>
+                            <input type="text" id="tokenPrice" readonly style="color:var(--primary); font-weight:bold; background:rgba(99,102,241,0.1);">
+                        </div>
+                        <div class="form-group">
+                            <label>Exp. ROI (%)</label>
+                            <input type="number" id="assetRoi" placeholder="12.5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" id="assetImage" placeholder="https://..." required>
+                    </div>
+
+                    <button id="createBtn" type="submit" class="btn-primary">Create Asset</button>
+                </form>
+            </div>
+            
+            <div class="preview-section">
+                <h3 style="margin-bottom:20px; color:var(--text-muted);">Live Preview</h3>
+                
+                <div class="property-card preview-card" style="pointer-events:none;">
+                    <div class="card-image-container">
+                        <img src="https://via.placeholder.com/400x300" class="p-img" id="prevImg" alt="Asset Preview">
+                        <span class="badge-roi p-apy" id="prevRoi">+0% APY</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="p-header" style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <h4 id="prevTitle" style="color:var(--text-main); margin:0;">Asset Name</h4>
+                            <span class="p-cat" id="prevCat" style="background:var(--bg-hover); padding:4px 8px; border-radius:6px; font-size:0.75rem;">Category</span>
+                        </div>
+                        <p class="location" style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-map-marker-alt"></i> <span id="prevLoc">Global</span></p>
+                        
+                        <div class="stats-row p-stats" style="display:flex; justify-content:space-between; margin-top:15px; padding-top:15px; border-top:1px solid var(--border);">
+                            <div class="stat-col">
+                                <small style="color:var(--text-muted); display:block; font-size:0.75rem;">Valuation</small>
+                                <strong id="prevVal" style="color:var(--text-main);">₹0</strong>
+                            </div>
+                            <div class="stat-col" style="text-align:right;">
+                                <small style="color:var(--text-muted); display:block; font-size:0.75rem;">Token Price</small>
+                                <strong id="prevTokenPrice" style="color:var(--primary);">₹0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/global.js"></script>
+    <script src="js/tokenize.js"></script>
+</body>
+</html>

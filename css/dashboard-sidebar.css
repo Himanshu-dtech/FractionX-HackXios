@@ -1,0 +1,107 @@
+/* --- 1. SIDEBAR CONTAINER --- */
+.sidebar {
+    width: 260px; /* Default Wide */
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    position: fixed; top: 0; left: 0; bottom: 0; height: 100vh;
+    display: flex; flex-direction: column;
+    z-index: 1000;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden; /* CRITICAL: Hides overflowing text */
+}
+
+/* --- 2. COLLAPSED STATE (Icon Only) --- */
+.sidebar.collapsed {
+    width: 80px;
+}
+
+/* Hide Text when Collapsed */
+.sidebar.collapsed .brand-text,
+.sidebar.collapsed .link-text {
+    display: none !important;
+    opacity: 0;
+}
+
+/* Center Icons when Collapsed */
+.sidebar.collapsed .brand { justify-content: center; padding: 0; }
+.sidebar.collapsed .side-menu a { justify-content: center; padding: 14px 0; }
+.sidebar.collapsed .footer-btn, 
+.sidebar.collapsed .logout-link { justify-content: center; padding: 14px 0; }
+
+/* Remove margins from icons when collapsed */
+.sidebar.collapsed .side-menu a i,
+.sidebar.collapsed .footer-btn i,
+.sidebar.collapsed .logout-link i { margin: 0; }
+
+/* --- 3. BRAND --- */
+.brand {
+    height: 80px; padding: 0 25px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 1.5rem; font-weight: 800; color: var(--text-main);
+    white-space: nowrap; flex-shrink: 0;
+}
+
+/* --- 4. MENU ITEMS --- */
+.side-menu { flex: 1; overflow-y: auto; padding: 20px 15px; scrollbar-width: none; }
+.side-menu::-webkit-scrollbar { display: none; }
+.side-menu li { margin-bottom: 8px; }
+
+.side-menu a {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    color: var(--text-muted);
+    font-weight: 600; font-size: 0.95rem;
+    white-space: nowrap; transition: all 0.2s ease;
+}
+
+.side-menu a:hover, .side-menu li.active a {
+    background: var(--bg-hover); color: var(--text-main);
+}
+.side-menu li.active a {
+    background: rgba(99, 102, 241, 0.1); color: var(--primary);
+}
+
+/* --- 5. FOOTER (FIXED) --- */
+.sidebar-footer {
+    display: flex;
+    flex-direction: column; /* Forces vertical stack */
+    gap: 10px;              /* Space between buttons */
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    background-color: var(--bg-sidebar);
+    flex-shrink: 0;
+}
+
+.footer-btn, .logout-link {
+    display: flex; align-items: center; gap: 12px;
+    width: 100%; padding: 12px 15px;
+    background: none; border: none;
+    color: var(--text-muted);
+    font-weight: 600; cursor: pointer;
+    border-radius: 10px; font-size: 0.95rem;
+    white-space: nowrap; transition: 0.2s;
+    overflow: hidden; /* Prevents text spillover */
+}
+
+.footer-btn:hover, .logout-link:hover {
+    background: var(--bg-hover); color: var(--text-main);
+}
+
+/* --- 6. TOGGLE BUTTON --- */
+#sidebarToggle {
+    display: block !important;
+    font-size: 1.4rem; color: var(--text-main);
+    background: none; border: none; cursor: pointer;
+    margin-right: 20px;
+}
+
+/* --- 7. MOBILE BEHAVIOR --- */
+@media (max-width: 1100px) {
+    .sidebar { transform: translateX(-100%); width: 260px; }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar.open::before {
+        content: ''; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.5); z-index: -1;
+    }
+}

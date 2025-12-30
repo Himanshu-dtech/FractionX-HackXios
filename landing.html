@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FractionX | Own the Unattainable</title>
+
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+  line-height:1.6;
+}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif}
+a{text-decoration:none;color:inherit}
+
+
+/* NAVBAR */
+.navbar{
+  position:fixed;top:0;width:100%;
+  padding:18px 80px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(2,6,23,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(148,163,184,.15);
+  z-index:100;
+}
+.nav-left{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px}
+.nav-left i{color:#6366f1}
+.nav-links{display:flex;gap:36px}
+.nav-links a{color:#9ca3af;font-size:14px;transition:color 0.3s ease}
+.nav-links a:hover{color:#fff}
+.login-btn{
+  padding:10px 26px;border-radius:30px;
+  border:1px solid #4b5563;font-weight:600;
+  transition:all 0.3s ease;cursor:pointer
+}
+.login-btn:hover{background:rgba(99,102,241,.15);border-color:#6366f1}
+
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding:130px 80px 90px;
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:72px;
+  align-items:center;
+}
+.hero h1{
+  font-size:68px;font-weight:800;line-height:1.1;margin-bottom:24px
+}
+.hero h1 span{
+  background:linear-gradient(135deg,#6366f1,#d946ef,#06b6d4);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.hero p{
+  max-width:540px;font-size:18px;color:#9ca3af;margin-bottom:36px
+}
+.hero-actions{display:flex;gap:18px}
+.btn-primary{
+  padding:16px 42px;border-radius:40px;
+  background:linear-gradient(135deg,#6366f1,#d946ef);
+  font-weight:700;color:#fff;
+  box-shadow:0 12px 30px rgba(99,102,241,.45);
+  transition:all 0.3s ease;cursor:pointer
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(99,102,241,.6)
+}
+.btn-outline{
+  padding:16px 40px;border-radius:40px;
+  border:2px solid #4b5563;font-weight:600;
+  transition:all 0.3s ease;cursor:pointer
+}
+.btn-outline:hover{
+  border-color:#6366f1;
+  background:rgba(99,102,241,.1);
+  transform:translateY(-2px)
+}
+
+
+/* HERO CARD */
+.hero-card{
+  border-radius:30px;overflow:hidden;
+  background:linear-gradient(145deg,#0f172a,#020617);
+  border:1px solid rgba(99,102,241,.35);
+  box-shadow:0 30px 60px rgba(0,0,0,.6);
+  transition:all 0.4s ease
+}
+.hero-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 40px 80px rgba(99,102,241,.3);
+  border-color:rgba(99,102,241,.6)
+}
+.hero-card-img{height:240px;overflow:hidden}
+.hero-card-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.5s ease
+}
+.hero-card:hover .hero-card-img img{
+  transform:scale(1.1)
+}
+.card-content{padding:30px;background:rgba(15,23,42,.95)}
+.card-header{display:flex;justify-content:space-between;margin-bottom:20px}
+.badge{
+  padding:6px 16px;border-radius:30px;font-size:13px;
+  background:rgba(16,185,129,.2);color:#10b981;
+  border:1px solid rgba(16,185,129,.3)
+}
+.profit{font-size:22px;font-weight:800;color:#10b981}
+.sub{font-size:14px;color:#9ca3af;margin-bottom:20px}
+.card-meta{
+  display:flex;justify-content:space-between;
+  padding-top:20px;border-top:1px solid rgba(148,163,184,.2)
+}
+
+
+/* SECTION */
+.section{padding:120px 80px;text-align:center}
+.section h2{font-size:48px;font-weight:800;margin-bottom:20px}
+.section-sub{
+  max-width:640px;margin:0 auto 64px;
+  font-size:18px;color:#9ca3af
+}
+
+
+/* MARKETPLACE */
+.market-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:36px;max-width:1500px;margin:auto
+}
+.market-card{
+  background:#0f172a;border-radius:26px;
+  border:1px solid rgba(55,65,81,.6);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:all 0.4s ease;
+  cursor:pointer
+}
+.market-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 20px 40px rgba(99,102,241,.4);
+  border-color:rgba(99,102,241,.6)
+}
+.market-img{height:210px;overflow:hidden;position:relative}
+.market-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.5s ease
+}
+.market-card:hover .market-img img{
+  transform:scale(1.15)
+}
+.tag{
+  position:absolute;top:18px;left:18px;
+  padding:8px 16px;border-radius:30px;font-size:12px;
+  backdrop-filter:blur(12px)
+}
+.real{background:rgba(59,130,246,.3);color:#60a5fa}
+.car{background:rgba(217,70,239,.3);color:#ec4899}
+.luxury{background:rgba(251,191,36,.3);color:#f59e0b}
+
+
+.market-content{
+  padding:22px;display:flex;flex-direction:column;flex-grow:1
+}
+.market-content h4{
+  font-size:20px;margin-bottom:6px;
+  transition:color 0.3s ease
+}
+.market-card:hover .market-content h4{
+  color:#6366f1
+}
+.market-content p{font-size:14px;color:#9ca3af;margin-bottom:14px}
+.stats{display:flex;justify-content:space-between;margin-bottom:18px}
+.roi{color:#10b981;font-weight:700}
+.market-content button{
+  margin-top:auto;padding:14px;border-radius:14px;
+  border:1px solid rgba(99,102,241,.3);
+  background:rgba(99,102,241,.2);
+  font-weight:700;color:#fff;cursor:pointer;
+  transition:all 0.3s ease
+}
+.market-content button:hover{
+  background:linear-gradient(135deg,#6366f1,#d946ef);
+  transform:scale(1.05);
+  box-shadow:0 8px 20px rgba(99,102,241,.5)
+}
+
+
+/* HOW IT WORKS */
+.dark{background:linear-gradient(180deg,#020617,#0f172a)}
+.steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:32px;max-width:1500px;margin:auto;text-align:left
+}
+.step{
+  padding:36px 30px;border-radius:24px;
+  background:rgba(15,23,42,.8);
+  border:1px solid rgba(55,65,81,.6);
+  transition:all 0.4s ease
+}
+.step:hover{
+  transform:translateY(-6px);
+  border-color:rgba(99,102,241,.5);
+  box-shadow:0 15px 35px rgba(99,102,241,.25)
+}
+.step span{
+  font-size:42px;font-weight:800;
+  background:linear-gradient(135deg,#6366f1,#d946ef);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.step h4{margin:12px 0}
+
+
+/* TRUST */
+.trust-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:36px;max-width:1500px;margin:auto;text-align:left
+}
+.trust-card{
+  padding:40px;border-radius:24px;
+  background:#0f172a;border:1px solid rgba(55,65,81,.6);
+  transition:all 0.4s ease
+}
+.trust-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(99,102,241,.5);
+  box-shadow:0 15px 35px rgba(99,102,241,.25)
+}
+.trust-card i{
+  font-size:36px;color:#6366f1;margin-bottom:18px;
+  transition:transform 0.3s ease
+}
+.trust-card:hover i{
+  transform:scale(1.15)
+}
+
+
+/* CTA */
+.cta{
+  padding:120px 80px;text-align:center;
+  background:linear-gradient(135deg,rgba(99,102,241,.2),transparent),#020617
+}
+.cta h2{font-size:44px;margin-bottom:16px}
+.cta p{color:#9ca3af;font-size:18px;margin-bottom:36px}
+
+
+/* FOOTER */
+footer{
+  padding:50px;text-align:center;
+  color:#6b7280;border-top:1px solid rgba(55,65,81,.3)
+}
+
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+  .hero{grid-template-columns:1fr}
+  .market-grid,.trust-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .navbar{padding:16px 26px}
+  .nav-links{display:none}
+  .hero{padding:120px 26px 70px}
+  .hero h1{font-size:48px}
+  .section{padding:90px 26px}
+  .market-grid,.trust-grid,.steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left"><i class="fas fa-rocket"></i> FractionX</div>
+  <div class="nav-links">
+    <a href="#marketplace">Marketplace</a>
+    <a href="#how">How it Works</a>
+    <a href="#security">Security</a>
+  </div>
+  <a href="login.html" class="login-btn">Login</a>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Own the <span>Unattainable.</span></h1>
+    <p>Fractional ownership of premium real-world assets starting from just ₹500.</p>
+    <div class="hero-actions">
+      <a href="login.html" class="btn-primary">Start Investing</a>
+      <a href="#how" class="btn-outline">How it Works</a>
+    </div>
+  </div>
+
+
+  <div class="hero-card">
+    <div class="hero-card-img">
+      <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&auto=format&fit=crop&q=90">
+    </div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="badge">Verified Asset</span>
+        <span class="profit">+24.5%</span>
+      </div>
+      <h3>Ferrari SF90</h3>
+      <p class="sub">Performance · Last 30 Days</p>
+      <div class="card-meta">
+        <div><span>Token Price</span><strong>₹500</strong></div>
+        <div><span>Liquidity</span><strong>High</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MARKETPLACE -->
+<section id="marketplace" class="section">
+<h2>Marketplace Highlights</h2>
+<p class="section-sub">Curated assets with verified ownership.</p>
+
+
+<div class="market-grid">
+  <div class="market-card">
+    <div class="market-img">
+      <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00">
+      <span class="tag real">Real Estate</span>
+    </div>
+    <div class="market-content">
+      <h4>Cyberhub Gurgaon</h4>
+      <p>Gurgaon, India</p>
+      <div class="stats"><span class="roi">12.8% ROI</span><span>₹5,000</span></div>
+      <button>View Asset</button>
+    </div>
+  </div>
+
+
+  <div class="market-card">
+    <div class="market-img">
+      <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023">
+      <span class="tag car">Supercar</span>
+    </div>
+    <div class="market-content">
+      <h4>Lamborghini Huracan</h4>
+      <p>Dubai, UAE</p>
+      <div class="stats"><span class="roi">20.5% ROI</span><span>₹1,000</span></div>
+      <button>View Asset</button>
+    </div>
+  </div>
+
+
+  <div class="market-card">
+    <div class="market-img">
+      <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e">
+      <span class="tag luxury">Luxury</span>
+    </div>
+    <div class="market-content">
+      <h4>Patek Philippe</h4>
+      <p>London, UK</p>
+      <div class="stats"><span class="roi">15.2% ROI</span><span>₹500</span></div>
+      <button>View Asset</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- HOW -->
+<section id="how" class="section dark">
+<h2>How FractionX Works</h2>
+<p class="section-sub">Four simple steps to ownership.</p>
+<div class="steps">
+  <div class="step"><span>01</span><h4>Onboard</h4><p>Quick KYC & signup.</p></div>
+  <div class="step"><span>02</span><h4>Discover</h4><p>Browse premium assets.</p></div>
+  <div class="step"><span>03</span><h4>Invest</h4><p>Buy fractional tokens.</p></div>
+  <div class="step"><span>04</span><h4>Track & Exit</h4><p>Monitor or sell anytime.</p></div>
+</div>
+</section>
+
+
+<!-- TRUST -->
+<section id="security" class="section">
+<h2>Trust & Security</h2>
+<p class="section-sub">Built on transparency and technology.</p>
+<div class="trust-grid">
+  <div class="trust-card"><i class="fas fa-shield-alt"></i><h4>Verified Assets</h4><p>Legal & independent checks.</p></div>
+  <div class="trust-card"><i class="fas fa-file-contract"></i><h4>Blockchain Records</h4><p>Immutable ownership trails.</p></div>
+  <div class="trust-card"><i class="fas fa-chart-line"></i><h4>Live Analytics</h4><p>Real-time performance.</p></div>
+</div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+<h2>Start Building Wealth Today</h2>
+<p>Premium assets, accessible to everyone.</p>
+<a href="login.html" class="btn-primary">Explore Marketplace</a>
+</section>
+
+
+<footer>© 2025 FractionX · All Rights Reserved</footer>
+
+
+</body>
+</html>

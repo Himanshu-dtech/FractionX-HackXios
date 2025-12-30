@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication | FractionX</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'], head: ['Outfit', 'sans-serif'] },
+                    colors: { navy: { 900: '#020617', 800: '#0f172a', 700: '#1e293b' }, primary: '#6366f1', accent: '#d946ef' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-navy-900 text-slate-50 h-screen flex items-center justify-center relative overflow-hidden">
+
+    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 bg-navy-800/80 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl w-full max-w-sm">
+        
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-head font-bold text-white mb-2 tracking-wide">
+                <i class="fas fa-rocket text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mr-2"></i>FractionX
+            </h1>
+            <p class="text-slate-400 text-sm">Your gateway to fractional wealth.</p>
+        </div>
+
+        <div class="flex bg-navy-900 p-1 rounded-lg mb-6 border border-white/5">
+            <button onclick="switchTab('login')" id="tab-login" class="flex-1 py-2 text-sm font-bold rounded-md bg-navy-700 text-white shadow transition-all">
+                Login
+            </button>
+            <button onclick="switchTab('signup')" id="tab-signup" class="flex-1 py-2 text-sm font-bold rounded-md text-slate-400 hover:text-white transition-all">
+                Sign Up
+            </button>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Email</label>
+                <div class="relative">
+                    <i class="fas fa-envelope absolute left-3 top-3 text-slate-500 text-sm"></i>
+                    <input type="email" id="login-email" required placeholder="name@example.com"
+                        class="w-full bg-navy-900 border border-white/10 rounded-lg py-2.5 pl-9 pr-3 text-white focus:border-primary focus:outline-none transition-colors text-sm">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Password</label>
+                <div class="relative">
+                    <i class="fas fa-lock absolute left-3 top-3 text-slate-500 text-sm"></i>
+                    <input type="password" id="login-pass" required placeholder="••••••••"
+                        class="w-full bg-navy-900 border border-white/10 rounded-lg py-2.5 pl-9 pr-3 text-white focus:border-primary focus:outline-none transition-colors text-sm">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-primary/25 mt-2">
+                Log In
+            </button>
+        </form>
+
+        <form id="signup-form" onsubmit="handleSignup(event)" class="space-y-4 hidden">
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Full Name</label>
+                <div class="relative">
+                    <i class="fas fa-user absolute left-3 top-3 text-slate-500 text-sm"></i>
+                    <input type="text" id="signup-name" required placeholder="e.g. Rahul Sharma"
+                        class="w-full bg-navy-900 border border-white/10 rounded-lg py-2.5 pl-9 pr-3 text-white focus:border-primary focus:outline-none transition-colors text-sm">
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Email</label>
+                <div class="relative">
+                    <i class="fas fa-envelope absolute left-3 top-3 text-slate-500 text-sm"></i>
+                    <input type="email" id="signup-email" required placeholder="name@example.com"
+                        class="w-full bg-navy-900 border border-white/10 rounded-lg py-2.5 pl-9 pr-3 text-white focus:border-primary focus:outline-none transition-colors text-sm">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Set Password</label>
+                <div class="relative">
+                    <i class="fas fa-lock absolute left-3 top-3 text-slate-500 text-sm"></i>
+                    <input type="password" id="signup-pass" required placeholder="Create a password"
+                        class="w-full bg-navy-900 border border-white/10 rounded-lg py-2.5 pl-9 pr-3 text-white focus:border-primary focus:outline-none transition-colors text-sm">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-primary hover:bg-indigo-500 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-primary/25 mt-2">
+                Create Account
+            </button>
+        </form>
+
+        <div class="mt-6 text-center text-xs text-slate-500">
+            <a href="landing.html" class="hover:text-white transition-colors">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function getUserKey(email, key) {
+    return `fractionx_${email}_${key}`;
+}
+
+        // --- 1. TAB SWITCHING ---
+        function switchTab(tab) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const loginTab = document.getElementById('tab-login');
+            const signupTab = document.getElementById('tab-signup');
+
+            // Reset inputs
+            loginForm.reset();
+            signupForm.reset();
+
+            if(tab === 'login') {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                loginTab.className = "flex-1 py-2 text-sm font-bold rounded-md bg-navy-700 text-white shadow transition-all";
+                signupTab.className = "flex-1 py-2 text-sm font-bold rounded-md text-slate-400 hover:text-white transition-all";
+            } else {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                signupTab.className = "flex-1 py-2 text-sm font-bold rounded-md bg-navy-700 text-white shadow transition-all";
+                loginTab.className = "flex-1 py-2 text-sm font-bold rounded-md text-slate-400 hover:text-white transition-all";
+            }
+        }
+
+        // --- 2. SIGN UP LOGIC (Saves to Browser Memory) ---
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            const btn = document.querySelector('#signup-form button');
+            const originalText = btn.innerText;
+            btn.innerText = "Creating Account...";
+            btn.disabled = true;
+
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const pass = document.getElementById('signup-pass').value;
+
+            setTimeout(() => {
+                // 1. Get existing users from "Fake Database" (LocalStorage)
+                let usersDB = JSON.parse(localStorage.getItem('fractionx_users_db')) || [];
+
+                // 2. Check if email already exists
+                const userExists = usersDB.find(u => u.email === email);
+                if (userExists) {
+                    alert("⚠️ User already exists! Please Login.");
+                    switchTab('login');
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+
+                // 3. Add new user to "Fake Database"
+                const newUser = { name, email, pass };
+                usersDB.push(newUser);
+                localStorage.setItem('fractionx_users_db', JSON.stringify(usersDB));
+
+                // 4. Success!
+                alert("✅ Account created successfully! Please Log In.");
+                switchTab('login');
+                
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }, 1000);
+        }
+
+        // --- 3. LOGIN LOGIC (Checks Browser Memory) ---
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const btn = document.querySelector('#login-form button');
+            const originalText = btn.innerText;
+            btn.innerText = "Verifying...";
+            btn.disabled = true;
+
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-pass').value;
+
+            setTimeout(() => {
+                // 1. Get users from "Fake Database"
+                let usersDB = JSON.parse(localStorage.getItem('fractionx_users_db')) || [];
+
+                // 2. Find User
+                const validUser = usersDB.find(u => u.email === email && u.pass === pass);
+
+                if (validUser) {
+                    // SUCCESS: Login the user
+                    const sessionUser = { name: validUser.name, email: validUser.email };
+                    localStorage.setItem('user', JSON.stringify(sessionUser));
+
+                    // Initialize Wallet for this user if new
+                   const balanceKey = getUserKey(validUser.email, 'balance');
+const investmentsKey = getUserKey(validUser.email, 'investments');
+
+// Initialize wallet ONLY for this user
+if (!localStorage.getItem(balanceKey)) {
+    localStorage.setItem(balanceKey, '0');
+}
+
+if (!localStorage.getItem(investmentsKey)) {
+    localStorage.setItem(investmentsKey, JSON.stringify([]));
+}
+
+
+                    window.location.href = "dashboard.html";
+                } else {
+                    // FAIL
+                    alert("❌ Invalid Email or Password. Try again or Sign Up.");
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }
+            }, 1000);
+        }
+        
+
+    </script>
+</body>
+</html>

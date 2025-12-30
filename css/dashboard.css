@@ -1,0 +1,166 @@
+/* --- LAYOUT GRID --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr; /* Net Worth card is wider */
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Chart is wider than Activity List */
+    gap: 25px;
+}
+
+/* --- CARDS --- */
+.card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex; flex-direction: column; justify-content: center;
+    border: 1px solid var(--border);
+}
+
+/* 1. The Purple Gradient Card (Net Worth) */
+.gradient-card {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Shapes for decoration */
+.gradient-card::before {
+    content: ''; position: absolute; top: -50%; right: -20%;
+    width: 200px; height: 200px; background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+.gradient-card::after {
+    content: ''; position: absolute; bottom: -30%; left: -10%;
+    width: 150px; height: 150px; background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+
+.card-label { font-size: 0.9rem; margin-bottom: 5px; opacity: 0.9; font-weight: 500; }
+.card-value { font-size: 2.2rem; font-weight: 800; margin: 5px 0; }
+
+.icon-box-glass {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; top: 25px; right: 25px;
+    font-size: 1.2rem; backdrop-filter: blur(5px);
+    color: white;
+}
+
+/* 2. Standard Stat Cards */
+.stat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.trend-badge { 
+    background: rgba(16, 185, 129, 0.1); color: #10b981; 
+    padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+}
+
+/* --- HEADER SEARCH BAR --- */
+.header-search {
+    flex: 1; max-width: 400px; margin: 0 30px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 15px;
+    display: flex; align-items: center; gap: 10px; color: var(--text-muted);
+}
+.header-search input {
+    background: transparent; border: none; outline: none;
+    color: var(--text-main); width: 100%; font-family: inherit;
+}
+
+/* --- RECENT ACTIVITY LIST (Right Side) --- */
+.activity-list { display: flex; flex-direction: column; gap: 20px; }
+
+.activity-item { display: flex; align-items: center; gap: 15px; }
+
+.act-icon {
+    width: 45px; height: 45px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 700; color: white;
+}
+.bg-red { background: #ef4444; }
+.bg-green { background: #10b981; }
+.bg-blue { background: #3b82f6; }
+
+.act-info { flex: 1; }
+.act-info h4 { margin: 0; font-size: 0.95rem; color: var(--text-main); font-weight: 600; }
+.act-info span { font-size: 0.8rem; color: var(--text-muted); }
+
+.act-amount { text-align: right; }
+.act-amount h4 { margin: 0; font-size: 0.95rem; color: var(--text-main); font-weight: 700; }
+.act-amount span { font-size: 0.8rem; }
+.text-red { color: #ef4444; }
+.text-green { color: #10b981; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .dashboard-grid, .bottom-grid { grid-template-columns: 1fr; }
+    .header-search { display: none; } /* Hide search on mobile */
+}
+/* --- WALLET CREDIT CARD --- */
+.credit-card {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    padding: 25px;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glass effect shine */
+.credit-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    transform: rotate(30deg);
+}
+
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.card-logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 1px; }
+.card-number { font-family: 'Courier New', monospace; font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.9; }
+
+.card-details { display: flex; justify-content: space-between; align-items: flex-end; }
+.card-details .label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; display: block; margin-bottom: 5px; }
+.card-details h2 { font-size: 1.5rem; margin: 0; }
+.card-details h4 { font-size: 1rem; margin: 0; font-weight: 500; text-transform: uppercase; }
+
+/* Buttons */
+.wallet-actions { display: flex; gap: 10px; }
+.btn-deposit {
+    width: 100%;
+    padding: 12px;
+    background: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-deposit:hover { background: #0f172a; transform: translateY(-2px); }
+
+/* Modal Input */
+.modal-input {
+    width: 100%; padding: 12px; margin: 15px 0;
+    border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1.1rem;
+}
+.chart-card {
+    justify-content: flex-start; /* FIX */
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 100% !important;
+}

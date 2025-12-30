@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | FractionX</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard-sidebar.css">
+    <link rel="stylesheet" href="css/marketplace.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fas fa-rocket"></i> 
+            <span class="brand-text">FractionX</span>
+        </div>
+        <ul class="side-menu">
+            <li><a href="dashboard.html"><i class="fas fa-chart-pie"></i> <span class="link-text">Overview</span></a></li>
+            <li class="active"><a href="marketplace.html"><i class="fas fa-store"></i> <span class="link-text">Marketplace</span></a></li>
+            <li><a href="portfolio.html"><i class="fas fa-wallet"></i> <span class="link-text">My Portfolio</span></a></li>
+            <li><a href="tokenize.html"><i class="fas fa-pen-fancy"></i> <span class="link-text">Tokenize Asset</span></a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-line"></i> <span class="link-text">Analytics</span></a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> <span class="link-text">My Profile</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="footer-btn" id="themeToggle">
+                <i class="fas fa-moon"></i> <span class="link-text">Dark Mode</span>
+            </button>
+            <a href="#" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> <span class="link-text">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-bar">
+            <div style="display:flex; align-items:center;">
+                <button id="sidebarToggle" class="mobile-only" style="margin-right:15px; background:none; border:none; color:var(--text-main); font-size:1.5rem;"><i class="fas fa-bars"></i></button>
+                <div>
+                    <h1>Marketplace</h1>
+                    <p style="color:var(--text-muted)">Discover and invest in premium fractional assets.</p>
+                </div>
+            </div>
+            
+            <div class="user-pill">
+                <div class="avatar-circle">H</div>
+                <span id="navUserName">Himanshu Kumar</span>
+            </div>
+        </header>
+
+        <div class="market-hero">
+            <div class="hero-text">
+                <div class="badge-pill">✨ New Listings</div>
+                <h2>Own a piece of the <br><span class="gradient-text">Extraordinary</span></h2>
+                <p>Invest in luxury cars, real estate, and art from ₹500.</p>
+                <button class="btn btn-primary" onclick="document.getElementById('assetsGrid').scrollIntoView({behavior: 'smooth'})">Start Investing</button>
+            </div>
+            <div class="hero-visual-mini">
+                <div class="glass-card float-1">
+                    <span class="icon">🏎️</span>
+                    <div><strong>Ferrari SF90</strong><small class="text-green">+24.5% APY</small></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-bar">
+            <div class="filter-tabs">
+                <button class="tab-btn filter-btn active" data-category="All" onclick="filterMarketplace('All', this)">All Assets</button>
+                <button class="tab-btn filter-btn" data-category="Vehicle" onclick="filterMarketplace('Vehicle', this)">Vehicles</button>
+                <button class="tab-btn filter-btn" data-category="Real Estate" onclick="filterMarketplace('Real Estate', this)">Real Estate</button>
+                <button class="tab-btn filter-btn" data-category="Art" onclick="filterMarketplace('Art', this)">Art</button>
+            </div>
+            
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search assets..." onkeyup="searchAssets()">
+            </div>
+        </div>
+
+        <div id="assetsGrid" class="assets-grid">
+            <p style="color:var(--text-muted); padding:20px;">Loading marketplace...</p>
+        </div>
+
+    </main>
+
+    <div id="investModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Invest in Asset</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <p id="modalAssetName" style="color:var(--text-muted); margin-bottom:15px; font-weight:600;">Asset Name</p>
+                
+                <input type="hidden" id="modalAssetId">
+                <input type="hidden" id="modalTokenPrice">
+
+                <div class="input-group">
+                    <label>Number of Tokens</label>
+                    <input type="number" id="investTokens" value="1" min="1" oninput="calculateTotal()">
+                </div>
+
+                <div class="total-row">
+                    <span>Total to Pay:</span>
+                    <strong id="totalPay">₹0</strong>
+                </div>
+
+                <button class="confirm-btn" onclick="confirmInvestment()">Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/global.js"></script>
+    <script src="js/marketplace.js"></script>
+</body>
+</html>

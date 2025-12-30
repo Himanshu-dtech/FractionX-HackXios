@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | FractionX</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard-sidebar.css">
+    <link rel="stylesheet" href="css/profile.css">
+    
+    <style>
+        /* Inline CSS for immediate styling */
+        .credit-card {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            padding: 25px;
+            border-radius: 20px;
+            color: white;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        .credit-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: rotate(30deg);
+        }
+        .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .card-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; }
+        .card-number { font-family: 'Courier New', monospace; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.9; }
+        .card-details { display: flex; justify-content: space-between; align-items: flex-end; }
+        .card-details .label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; display: block; margin-bottom: 5px; }
+        .card-details h2 { font-size: 1.4rem; margin: 0; }
+        .card-details h4 { font-size: 0.9rem; margin: 0; font-weight: 500; text-transform: uppercase; }
+
+        /* Button Style */
+        .btn-deposit {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            background: #1e293b;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            font-size: 0.95rem;
+        }
+        .btn-deposit:hover { background: #0f172a; transform: translateY(-2px); }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white; padding: 30px; border-radius: 20px;
+            width: 100%; max-width: 400px; text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .modal-input {
+            width: 100%; padding: 15px; margin: 20px 0;
+            border: 2px solid #e2e8f0; border-radius: 12px;
+            font-size: 1.5rem; text-align: center; font-weight: 700; color: #1e293b;
+            outline: none;
+        }
+        .modal-input:focus { border-color: #6366f1; }
+        .modal-actions { display: flex; gap: 10px; }
+        .modal-actions button { flex: 1; padding: 12px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; }
+        .confirm-btn { background: #10b981; color: white; }
+        .cancel-btn { background: #f1f5f9; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fas fa-rocket"></i> 
+            <span class="brand-text">FractionX</span>
+        </div>
+        <ul class="side-menu">
+            <li><a href="dashboard.html"><i class="fas fa-chart-pie"></i> <span class="link-text">Overview</span></a></li>
+            <li><a href="marketplace.html"><i class="fas fa-store"></i> <span class="link-text">Marketplace</span></a></li>
+            <li><a href="portfolio.html"><i class="fas fa-wallet"></i> <span class="link-text">My Portfolio</span></a></li>
+            <li><a href="tokenize.html"><i class="fas fa-pen-fancy"></i> <span class="link-text">Tokenize Asset</span></a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-line"></i> <span class="link-text">Analytics</span></a></li>
+            <li class="active"><a href="profile.html"><i class="fas fa-user"></i> <span class="link-text">My Profile</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="footer-btn" id="themeToggle">
+                <i class="fas fa-moon"></i> <span class="link-text">Dark Mode</span>
+            </button>
+            <a href="login.html" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> <span class="link-text">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-bar">
+            <div style="display:flex; align-items:center;">
+                <button id="sidebarToggle" class="mobile-only" style="margin-right:15px; background:none; border:none; color:var(--text-main); font-size:1.5rem;"><i class="fas fa-bars"></i></button>
+                <div>
+                    <h1>My Profile</h1>
+                    <p style="color:var(--text-muted)">Manage your account settings.</p>
+                </div>
+            </div>
+            
+            <div class="user-pill">
+                <div class="avatar-circle">U</div>
+                <span id="navUserName">User</span>
+            </div>
+        </header>
+
+        <div class="profile-grid">
+            
+            <div class="card identity-card">
+                <div class="avatar-large" style="margin-bottom: 10px;">
+                    <span id="profileInitials">U</span>
+                    <button class="cam-btn" style="position:absolute; bottom:0; right:0; background:var(--primary); border:none; color:white; width:30px; height:30px; border-radius:50%; cursor:pointer;">
+                        <i class="fas fa-camera" style="font-size:0.8rem;"></i>
+                    </button>
+                </div>
+                
+                <h2 id="profileNameDisplay" style="margin:5px 0; color:var(--text-main); text-align:center;">User Name</h2>
+                <p id="profileEmailDisplay" style="color:var(--text-muted); margin-bottom:20px; text-align:center;">user@example.com</p>
+                
+                <div class="credit-card">
+                    <div class="card-top">
+                        <img src="https://img.icons8.com/color/48/000000/sim-card-chip.png" class="chip" alt="chip" style="width:35px;">
+                        <span class="card-logo">FractionX</span>
+                    </div>
+                    <div class="card-number">**** **** **** 4291</div>
+                    <div class="card-details">
+                        <div>
+                            <span class="label">Balance</span>
+                            <h2 id="cardBalance">₹0.00</h2>
+                        </div>
+                        <div>
+                            <span class="label">Holder</span>
+                            <h4 id="cardHolder">Name</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-deposit" onclick="openDepositModal()">
+                    <i class="fas fa-plus-circle"></i> Add Funds
+                </button>
+            </div>
+
+            <div class="card settings-card">
+                <h3 style="margin-bottom:20px; color:var(--text-main);">Edit Details</h3>
+                
+                <form class="settings-form" id="profileForm">
+                    <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                        <div class="form-group">
+                            <label style="color:var(--text-muted); font-size:0.85rem; display:block; margin-bottom:8px;">Full Name</label>
+                            <input type="text" id="inputName" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:var(--text-muted); font-size:0.85rem; display:block; margin-bottom:8px;">Phone</label>
+                            <input type="text" id="inputPhone" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:20px;">
+                        <label style="color:var(--text-muted); font-size:0.85rem; display:block; margin-bottom:8px;">Email Address</label>
+                        <input type="email" id="inputEmail" class="form-input" readonly style="opacity:0.7; cursor:not-allowed; background:#f8fafc;">
+                    </div>
+
+                    <div class="form-group" style="margin-top:20px;">
+                        <label style="color:var(--text-muted); font-size:0.85rem; display:block; margin-bottom:8px;">Location</label>
+                        <input type="text" id="inputLocation" class="form-input">
+                    </div>
+
+                    <div class="form-group" style="margin-top:20px;">
+                        <label style="color:var(--text-muted); font-size:0.85rem; display:block; margin-bottom:8px;">Bio</label>
+                        <textarea id="inputBio" rows="4" class="form-input"></textarea>
+                    </div>
+
+                    <div style="margin-top:30px; text-align:right;">
+                        <button type="button" class="btn-save" onclick="saveProfileData()" style="background:var(--primary); color:white; border:none; padding:12px 25px; border-radius:8px; cursor:pointer; font-weight:600;">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div id="depositModal" class="modal-overlay" style="display:none;">
+            <div class="modal-content">
+                <h3 style="color:#1e293b; margin-bottom:5px;">Add Funds</h3>
+                <p style="color:#64748b; font-size:0.9rem;">Enter amount to deposit securely.</p>
+                
+                <input type="number" id="depositAmount" placeholder="₹50,000" class="modal-input">
+                
+                <div class="modal-actions">
+                    <button class="cancel-btn" onclick="closeDepositModal()">Cancel</button>
+                    <button class="confirm-btn" onclick="confirmDeposit()">Confirm Payment</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/global.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

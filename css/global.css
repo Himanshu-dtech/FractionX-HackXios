@@ -1,0 +1,140 @@
+/* --- THEME VARIABLES (Copy this to the top) --- */
+:root {
+    /* Light Mode Colors */
+    --bg-color: #f3f4f6;           /* Light grey background for the page */
+    --card-bg: #ffffff;            /* White for cards */
+    --text-color: #111827;         /* Dark text */
+    --input-bg: #ffffff;           /* White inputs */
+    --border-color: #e5e7eb;       /* Light border */
+}
+
+body.dark-mode {
+    /* Dark Mode Colors */
+    --bg-color: #0f172a;           /* Dark Navy background */
+    --card-bg: #1e293b;            /* Darker Navy for cards */
+    --text-color: #f9fafb;         /* White text */
+    --input-bg: #334155;           /* Grey inputs (Fixes the email box) */
+    --border-color: #374151;       /* Dark border */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- GLOBAL INPUT FIX (Fixes the Email box in Dark Mode) --- */
+input, select, textarea {
+    background-color: var(--input-bg) !important; 
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --- 1. THEME VARIABLES (Dark by Default) --- */
+:root {
+    /* Backgrounds */
+    --bg-body: #0f172a;       /* Deep Navy Blue */
+    --bg-sidebar: #1e293b;    /* Lighter Navy */
+    --bg-card: #1e293b;
+    --bg-hover: rgba(255, 255, 255, 0.05);
+    
+    /* Text */
+    --text-main: #f8fafc;     /* White-ish */
+    --text-muted: #94a3b8;    /* Grey-ish */
+    
+    /* Borders - FIXED NAME */
+    --border: rgba(255, 255, 255, 0.05);
+    
+    /* Accents */
+    --primary: #6366f1;       /* Indigo */
+    --success: #10b981;       /* Green */
+    --warning: #f59e0b;       /* Orange */
+}
+
+/* --- LIGHT MODE OVERRIDES --- */
+body.light-mode {
+    --bg-body: #f1f5f9;       /* Light Grey */
+    --bg-sidebar: #ffffff;    /* Pure White */
+    --bg-card: #ffffff;
+    --bg-hover: #f8fafc;
+    
+    --text-main: #0f172a;     /* Dark Navy */
+    --text-muted: #64748b;    /* Slate Grey */
+    
+    --border: #e2e8f0;        /* Light Border */
+}
+
+/* --- GLOBAL RESETS --- */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.3s ease, color 0.3s ease; }
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- MAIN CONTENT AREA --- */
+.main-content {
+    flex: 1;
+    margin-left: 260px; /* Width of Sidebar */
+    padding: 30px;
+}
+
+/* --- COMMON UTILITIES --- */
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Top Bar Styling */
+.top-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 35px;
+}
+.top-bar h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 5px; }
+
+.user-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border); /* Uses corrected variable */
+    padding: 8px 15px;
+    border-radius: 30px;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.avatar-circle {
+    width: 35px; height: 35px;
+    background: linear-gradient(135deg, var(--primary), #a855f7);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: white; font-size: 0.9rem;
+}
+
+/* --- MOBILE UTILITIES --- */
+.mobile-only { display: none; }
+
+@media (max-width: 1100px) {
+    .mobile-only { display: block; }
+    
+    .top-bar { padding: 0 10px; }
+    
+    /* Ensure grid collapses on mobile */
+    .dashboard-grid, .bottom-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .header-search { display: none; } 
+}
+/* --- Fix for all Form Inputs & Dropdowns --- */
+input, select, textarea {
+    /* Use the variable theme colors instead of hard-coded ones */
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Optional: Makes placeholder text readable in both modes */
+::placeholder {
+    color: #9ca3af; /* A medium gray that works on dark & light */
+    opacity: 1;
+}

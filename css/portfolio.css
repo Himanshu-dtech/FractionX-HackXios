@@ -1,0 +1,124 @@
+/* --- Grid Layout for Main Content --- */
+.portfolio-grid-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Left panel fixed width, Right panel fills rest */
+    gap: 2rem;
+}
+
+/* --- Left Panel (Wallet & Chart) --- */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Wallet Card */
+.wallet-card {
+    position: relative; 
+    background: linear-gradient(135deg, #1e293b, #0f172a); 
+    color: white; 
+    border-radius: 16px; 
+    padding: 2rem; 
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.card-bg {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(102,126,234,0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+.wallet-content { position: relative; z-index: 1; text-align: center; }
+.label { color: #cbd5e1; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.wallet-content h1 { font-size: 2.5rem; margin: 10px 0; font-weight: 800; color: white; }
+
+.pills { display: flex; justify-content: center; gap: 8px; margin-bottom: 1.5rem; }
+.pill { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+.pill.profit { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+.pill.time { background: rgba(255,255,255,0.1); color: #cbd5e1; }
+
+.wallet-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.btn-deposit { background: white; color: #0f172a; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+.btn-withdraw { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+.btn-deposit:hover { transform: translateY(-2px); }
+.btn-withdraw:hover { background: rgba(255,255,255,0.2); }
+
+/* --- Right Panel (Table) --- */
+.table-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    height: 100%; /* Fill height */
+}
+
+.card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+}
+.card-header h3 { font-size: 1.1rem; color: var(--text-main); }
+
+.small-search {
+    padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--bg-input); color: var(--text-main); font-size: 0.9rem; outline: none;
+}
+
+.holdings-table { width: 100%; border-collapse: collapse; }
+.holdings-table th { 
+    text-align: left; padding: 12px; font-size: 0.8rem; 
+    color: var(--text-muted); border-bottom: 1px solid var(--border);
+}
+.holdings-table td { 
+    padding: 15px 12px; border-bottom: 1px solid var(--border); 
+    font-weight: 600; color: var(--text-main); 
+}
+
+.asset-flex { display: flex; align-items: center; gap: 10px; }
+.asset-icon { 
+    width: 36px; height: 36px; background: var(--bg-hover); 
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; 
+}
+.text-green { color: var(--success); }
+
+/* Mobile */
+@media (max-width: 1000px) {
+    .portfolio-grid-layout { grid-template-columns: 1fr; }
+}
+.profile-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Sidebar width + remaining space */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.identity-card { text-align: center; }
+
+/* Avatar Styling */
+.avatar-large {
+    width: 100px; height: 100px;
+    background: var(--bg-dark);
+    color: var(--primary);
+    font-size: 2.5rem; font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 15px;
+    border: 3px solid var(--border);
+    position: relative;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr !important; /* Stack form inputs */
+    }
+}

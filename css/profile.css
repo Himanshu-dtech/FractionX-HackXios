@@ -1,0 +1,107 @@
+/* --- PROFILE SPECIFIC VARIABLES --- */
+:root {
+    --bg-input: rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode {
+    --bg-input: #f1f5f9;
+}
+
+/* --- LAYOUT --- */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Sidebar is 350px, Content takes rest */
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- LEFT COLUMN: IDENTITY CARD --- */
+.identity-card {
+    padding: 0 !important; /* Override default card padding for the cover image */
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    border: 1px solid var(--border);
+}
+
+.avatar-large {
+    width: 100px; height: 100px;
+    background: linear-gradient(135deg, var(--primary), #a855f7);
+    border: 4px solid var(--bg-card);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; font-weight: 700; color: white;
+    margin-top: 40px; /* Push down */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cam-btn {
+    position: absolute; bottom: 0; right: 0;
+    background: var(--bg-card); color: var(--text-main);
+    border: 2px solid var(--border);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.cam-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* --- RIGHT COLUMN: SETTINGS CARD --- */
+.settings-card {
+    padding: 30px !important;
+    border: 1px solid var(--border);
+}
+
+/* Form Styling */
+.settings-form { margin-top: 10px; }
+
+.form-group { margin-bottom: 20px; }
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-input); /* Uses the variable defined at top */
+    color: var(--text-main);
+    outline: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+    background: var(--bg-card);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Buttons */
+.btn-save {
+    background: var(--primary);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 0.95rem;
+}
+
+.btn-save:hover {
+    background: #4f46e5; /* Darker indigo */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* --- RESPONSIVE --- */
+@media(max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+}

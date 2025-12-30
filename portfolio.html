@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | FractionX</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard-sidebar.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fas fa-rocket"></i> 
+            <span class="brand-text">FractionX</span>
+        </div>
+        <ul class="side-menu">
+            <li><a href="dashboard.html"><i class="fas fa-chart-pie"></i> <span class="link-text">Overview</span></a></li>
+            <li><a href="marketplace.html"><i class="fas fa-store"></i> <span class="link-text">Marketplace</span></a></li>
+            <li class="active"><a href="portfolio.html"><i class="fas fa-wallet"></i> <span class="link-text">My Portfolio</span></a></li>
+            <li><a href="tokenize.html"><i class="fas fa-pen-fancy"></i> <span class="link-text">Tokenize Asset</span></a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-line"></i> <span class="link-text">Analytics</span></a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> <span class="link-text">My Profile</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="footer-btn" id="themeToggle">
+                <i class="fas fa-moon"></i> <span class="link-text">Dark Mode</span>
+            </button>
+            <a href="#" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> <span class="link-text">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-bar">
+            <div style="display:flex; align-items:center;">
+                <button id="sidebarToggle" class="mobile-only" style="margin-right:15px; background:none; border:none; color:var(--text-main); font-size:1.5rem;"><i class="fas fa-bars"></i></button>
+                <div>
+                    <h1>My Portfolio</h1>
+                    <p style="color:var(--text-muted)">Manage your assets and track performance.</p>
+                </div>
+            </div>
+            
+            <div class="user-pill">
+                <div class="avatar-circle">H</div>
+                <span id="navUserName">Himanshu Kumar</span>
+            </div>
+        </header>
+
+        <div class="portfolio-grid-layout">
+            
+            <div class="left-panel">
+                
+                <div class="wallet-card">
+                    <div class="wallet-content">
+                        <span class="label">Total Net Worth</span>
+                        <h1 id="totalNetWorth">₹0.00</h1>
+                        
+                        <div class="pills">
+                            <span class="pill profit"><i class="fas fa-arrow-up"></i> +12.4%</span>
+                            <span class="pill time">All Time</span>
+                        </div>
+                        
+                        <div class="wallet-actions">
+                            <button class="btn-deposit"><i class="fas fa-plus"></i> Deposit</button>
+                            <button class="btn-withdraw">Withdraw</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card chart-section">
+                    <div class="card-header">
+                        <h3>Asset Allocation</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right-panel">
+                <div class="card table-card" style="height:100%;">
+                    <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                        <h3>Your Holdings</h3>
+                        <div class="search-wrap" style="position:relative;">
+                            <i class="fas fa-search" style="position:absolute; left:10px; top:10px; color:var(--text-muted); font-size:0.8rem;"></i>
+                            <input type="text" placeholder="Search..." style="background:var(--bg-body); border:1px solid var(--border); padding:8px 8px 8px 30px; border-radius:8px; color:var(--text-main); outline:none;">
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="holdings-table" style="width:100%; border-collapse:collapse;">
+                            <thead>
+                                <tr style="border-bottom:1px solid var(--border);">
+                                    <th style="text-align:left; padding:15px; color:var(--text-muted); font-size:0.8rem;">ASSET</th>
+                                    <th style="text-align:left; padding:15px; color:var(--text-muted); font-size:0.8rem;">TOKENS</th>
+                                    <th style="text-align:left; padding:15px; color:var(--text-muted); font-size:0.8rem;">VALUE</th>
+                                    <th style="text-align:right; padding:15px; color:var(--text-muted); font-size:0.8rem;">RETURN</th>
+                                </tr>
+                            </thead>
+                            <tbody id="portfolioList">
+                                <tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-muted);">Loading assets...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/global.js"></script>
+    <script src="js/portfolio.js"></script>
+</body>
+</html>
