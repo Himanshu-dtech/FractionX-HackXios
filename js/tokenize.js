@@ -1,4 +1,4 @@
-const API_URL = "https://your-backend-name.onrender.com";
+const API_URL = "https://fractionx-hackxios.onrender.com";
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("✅ Tokenize Asset Script Loaded");

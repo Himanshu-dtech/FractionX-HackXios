@@ -1,7 +1,7 @@
 // ================================
 // CONFIG
 // ================================
-const API_URL = "https://your-backend-name.onrender.com";
+const API_URL = "https://fractionx-hackxios.onrender.com";
 
 // ================================
 // USER HELPERS
@@ -64,20 +64,33 @@ function updateAllBalances() {
 // ================================
 // MARKETPLACE
 // ================================
+// ================================
+// MARKETPLACE LOAD LOGIC (Fixed)
+// ================================
 async function loadMarketplace() {
     const container = document.getElementById('assetsGrid');
     if (!container) return;
 
     container.innerHTML = '<p style="color:white;text-align:center;">Loading assets...</p>';
 
+    // 1. Get Locally Tokenized Assets (The missing link!)
+    // This reads the assets you created in the Tokenize page
+    const localKey = getUserKey(currentUser.email, 'tokenized_assets');
+    const localAssets = JSON.parse(localStorage.getItem(localKey)) || [];
+
+    // 2. Get Backend/Mock Assets
+    let backendAssets = [];
     try {
         const res = await fetch(`${API_URL}/properties`);
         if (!res.ok) throw new Error("Backend Offline");
-        allProperties = await res.json();
+        backendAssets = await res.json();
     } catch {
-        console.warn("Using MOCK DATA");
-        allProperties = MOCK_ASSETS;
+        console.warn("Backend offline -> Using MOCK DATA");
+        backendAssets = MOCK_ASSETS;
     }
+
+    // 3. Merge Them (Local first, so your new asset shows at top)
+    allProperties = [...localAssets, ...backendAssets];
 
     renderGrid(allProperties);
 }

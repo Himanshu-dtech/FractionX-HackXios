@@ -1,7 +1,7 @@
 console.log("🚀 Global Script Loaded");
 
 // CHANGE THIS IF NEEDED (Use your 5000 or 5001 port)
-const API_URL = "https://your-backend-name.onrender.com";
+const API_URL = "https://fractionx-hackxios.onrender.com";
 
 document.addEventListener('DOMContentLoaded', async () => {
     
