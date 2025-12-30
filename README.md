@@ -1,3 +1,4 @@
+![WhatsApp Image 2025-12-30 at 22 32 50](https://github.com/user-attachments/assets/1ecf536e-63c7-49fb-b357-efd3396bea65)
 # FractionX 💎  
 ### Democratizing High-Value Asset Investment via Fractionalization
 
@@ -66,7 +67,7 @@ Track wallet balance, profits, active assets, and portfolio growth.
 
 ### 📈 Market Analytics
 Real-time market insights, growth trends, and asset category distribution.
-<img src="![Screenshot 2025-12-30 230314](https://github.com/user-attachments/assets/b40006cf-649e-473e-838c-3c96386c863f)
+<img src="[![Screenshot 2025-12-30 230314](https://github.com/user-attachments/assets/b40006cf-649e-473e-838c-3c96386c863f)](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 " width="800"/>
 
 ---
