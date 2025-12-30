@@ -62,10 +62,28 @@ Easily list your own assets for fractional investment with a live preview.
 
 Follow these steps to run the project locally:
 
+
+## 🧠 Challenges & Solutions
+During the hackathon, we encountered several technical hurdles:
+
+Deployment Pathing: * Issue: Faced "Module Not Found" errors on Render due to nested folder structures (Backend/Backend/server.js).
+
+Solution: Configured the root directory to be empty and set start commands explicitly to node Backend/server.js.
+
+Data Latency & Cold Starts: * Issue: The free-tier backend sleeps after inactivity, causing long initial load times.
+
+Solution: Implemented a "Hybrid Sync" system that loads cached Local Storage data first, ensuring instant UI load times while the backend wakes up in the background.
+
+CORS & API Conflicts: * Issue: Encountered CORS issues blocking the frontend and duplicate variable declarations crashing the scripts.
+
+Solution: Configured CORS properly on the backend and established a single source of truth (global.js) for variables like API_URL.
+
 ### 1. Clone the Repository
 ```bash
 git clone [https://github.com/Himanshu-dtech/FractionX-HackXios.git](https://github.com/Himanshu-dtech/FractionX-HackXios.git)
 cd FractionX-HackXios
+
+
 2. Frontend Setup
 Simply open index.html or login.html in your browser.
 
@@ -82,22 +100,7 @@ npm install
 npm start
 The server will start at http://localhost:10000.
 
-🧠 Challenges & Solutions
-During the hackathon, we encountered several technical hurdles:
 
-Deployment Pathing: * Issue: Faced "Module Not Found" errors on Render due to nested folder structures (Backend/Backend/server.js).
 
-Solution: Configured the root directory to be empty and set start commands explicitly to node Backend/server.js.
-
-Data Latency & Cold Starts: * Issue: The free-tier backend sleeps after inactivity, causing long initial load times.
-
-Solution: Implemented a "Hybrid Sync" system that loads cached Local Storage data first, ensuring instant UI load times while the backend wakes up in the background.
-
-CORS & API Conflicts: * Issue: Encountered CORS issues blocking the frontend and duplicate variable declarations crashing the scripts.
-
-Solution: Configured CORS properly on the backend and established a single source of truth (global.js) for variables like API_URL.
-
-👥 Team
-Himanshu - Full Stack Developer
 
 Built with ❤️ for HackXios 2025
