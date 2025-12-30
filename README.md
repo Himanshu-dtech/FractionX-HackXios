@@ -48,7 +48,7 @@ Our mission is to empower **students and first-time investors** with access to w
 > ⚠️ Images use **GitHub RAW URLs** to avoid broken previews.
 
 ### 🏠 Landing Page
-<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/landing.png" width="800"/>
+<img src="Landing.jpeg" width="800"/>
 
 ---
 
