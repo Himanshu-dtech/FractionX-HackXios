@@ -1,4 +1,4 @@
-![WhatsApp Image 2025-12-30 at 22 32 50](https://github.com/user-attachments/assets/1ecf536e-63c7-49fb-b357-efd3396bea65)
+
 # FractionX 💎  
 ### Democratizing High-Value Asset Investment via Fractionalization
 
@@ -46,29 +46,32 @@ Our mission is to empower **students and first-time investors** with access to w
 ## 📸 Screenshots
 
 ### 🏠 Landing Page
-<img src="![WhatsApp Image 2025-12-30 at 22 30 27](https://github.com/user-attachments/assets/0d0de9f5-acbe-4def-8244-b0d2d25115ee)
-" width="800"/>
+<img src="assets/screenshots/landing.png" width="800"/>
 
 ---
 
 ### 🛒 Marketplace
 Discover and invest in premium fractional assets.
-<img src="![WhatsApp Image 2025-12-30 at 22 32 50](https://github.com/user-attachments/assets/c08e97cf-6e3f-4f16-ab4d-cd9427255dd9)
-" width="800"/>
+<img src="assets/screenshots/marketplace.png" width="800"/>
 
 ---
 
 ### 📊 User Dashboard
 Track wallet balance, profits, active assets, and portfolio growth.
-<img src="![WhatsApp Image 2025-12-30 at 22 30 26 (1)](https://github.com/user-attachments/assets/fa98db3a-e7c6-4e43-9f60-d2a56cf17b1d)
-" width="800"/>
+<img src="assets/screenshots/dashboard.png" width="800"/>
 
 ---
 
 ### 📈 Market Analytics
 Real-time market insights, growth trends, and asset category distribution.
-<img src="[![Screenshot 2025-12-30 230314](https://github.com/user-attachments/assets/b40006cf-649e-473e-838c-3c96386c863f)](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-" width="800"/>
+<img src="assets/screenshots/analytics.png" width="800"/>
+
+---
+
+### ⭐ Marketplace Highlights
+Curated high-value assets with verified ownership.
+<img src="assets/screenshots/highlights.png" width="800"/>
+
 
 ---
 
