@@ -1,7 +1,4 @@
-// ================================
-// CONFIG
-// ================================
-const API_URL = "https://fractionx-hackxios.onrender.com";
+
 
 // ================================
 // USER HELPERS
