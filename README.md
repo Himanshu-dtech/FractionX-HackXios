@@ -1,3 +1,4 @@
+![WhatsApp Image 2025-12-30 at 22 32 50](https://github.com/user-attachments/assets/63ec0001-38ef-421d-9659-9aa8f408a068)
 # FractionX 💎
 
 **Democratizing High-Value Asset Investment via Fractionalization.**
@@ -30,7 +31,7 @@ Here's a glimpse of the FractionX platform in action.
 
 ### **User Dashboard & Analytics**
 Track your net worth, recent activity, and market trends.
-
+https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 | **User Dashboard** | **Market Analytics** |
 | :---: | :---: |
 | <img src="path/to/image_22.png" alt="Dashboard" width="400"> | <img src="path/to/image_24.png" alt="Analytics" width="400"> |
