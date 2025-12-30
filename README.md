@@ -53,7 +53,7 @@ Our mission is to empower **students and first-time investors** with access to w
 ---
 
 ### 🛒 Marketplace
-<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/marketplace.png" width="800"/>
+<img src="Marketplace.jpeg"/>
 
 ---
 
