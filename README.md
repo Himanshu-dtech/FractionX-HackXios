@@ -45,6 +45,8 @@ Our mission is to empower **students and first-time investors** with access to w
 
 ## 📸 Screenshots
 
+> ⚠️ Images use **GitHub RAW URLs** to avoid broken previews.
+
 ### 🏠 Landing Page
 <img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/landing.png" width="800"/>
 
@@ -55,18 +57,9 @@ Our mission is to empower **students and first-time investors** with access to w
 
 ---
 
-### 📊 Dashboard
+### 📊 User Dashboard
 <img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/dashboard.png" width="800"/>
 
----
-
-### 📈 Market Analytics
-<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/analytics.png" width="800"/>
-
----
-
-### ⭐ Marketplace Highlights
-<img src="https://raw.githubusercontent.com/Himanshu-dtech/FractionX-HackXios/main/assets/screenshots/highlights.png" width="800"/>
 
 ---
 
