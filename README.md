@@ -1,5 +1,6 @@
-![WhatsApp Image 2025-12-30 at 22 32 50](https://github.com/user-attachments/assets/63ec0001-38ef-421d-9659-9aa8f408a068)
 # FractionX 💎
+
+# LIVE WEBSITE LINK: (https://fractionx-hackxios.onrender.com)
 
 **Democratizing High-Value Asset Investment via Fractionalization.**
 
